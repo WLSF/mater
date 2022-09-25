@@ -2,24 +2,25 @@ defmodule MaterTest do
   use ExUnit.Case
   doctest Mater
 
-  defmodule Normal.Github do
+  defmodule Github do
     alias Mater
 
     @endpoint ~s(https://api.github.com/graphql)
-    @auth [{"Authorization", "Bearer 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"}]
 
     def fetch_repo(owner, name) do
       query = """
         query {
           repository(owner: "#{owner}", name: "#{name}") {
-            id,
-            name,
-            pushedAt
+            name
           }
         }
         """
 
-      Mater.call(@endpoint, query, @auth)
+      Mater.call(@endpoint, %{query: query}, auth())
+    end
+
+    defp auth do
+      [{"Authorization", "Bearer #{System.get_env("GITHUB_KEY")}"}]
     end
   end
 
