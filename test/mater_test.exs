@@ -26,7 +26,7 @@ defmodule MaterTest do
 
   describe "Mater basics" do
     test "fetch data from a Github repo by owner and name" do
-      assert %{"data" => %{"repository" => %{"name" => "mater"}}} =
+      assert {:ok, %{"data" => %{"repository" => %{"name" => "mater"}}}} =
                Github.fetch_repo("WLSF", "mater")
     end
   end
