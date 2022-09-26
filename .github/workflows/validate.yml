@@ -1,0 +1,30 @@
+name: Checks & Tests
+
+on: pull_request
+
+jobs:
+  validate:
+    name: Validate and Test Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: erlef/setup-beam@v1.13
+        with:
+          otp-version: 24.0.0
+          elixir-version: 1.13.3
+
+      - name: Install Dependencies
+        run: mix deps.get
+
+      - name: Compile
+        run: mix compile --warnings-as-errors
+
+      - name: Check Format
+        run: mix format --check-formatted
+
+      - name: Check Styling
+        run: mix do credo, dialyzer --no-check end
+
+      - name: Run tests
+        run: mix test
