@@ -14,7 +14,11 @@ defmodule Mater do
       iex> Mater.call("https://api.github.com/graphql", %{query: "query {repository...}"}, [{"Authorization", "Bearer ..."}])
 
   """
-  @spec call(String.t(), map(), Keyword.t()) :: {:ok, map()} | {:error, map()}
+  @spec call(endpoint, body, opts) :: {:ok, map()} | {:error, map()}
+    when
+      endpoint: String.t(),
+      body: %{query: String.t(), variables: map()},
+      opts: Keyword.t()
   def call(endpoint, query, opts) do
   end
 end
