@@ -9,12 +9,12 @@ defmodule MaterTest do
 
     def fetch_repo(owner, name) do
       query = """
-        query fetchRepository($owner: String!, $name: String!){
-          repository(owner: $owner, name: $name) {
-            name
-          }
+      query fetchRepository($owner: String!, $name: String!){
+        repository(owner: $owner, name: $name) {
+          name
         }
-        """
+      }
+      """
 
       Mater.call(@endpoint, %{query: query, variables: %{owner: owner, name: name}}, auth())
     end
@@ -26,7 +26,8 @@ defmodule MaterTest do
 
   describe "Mater basics" do
     test "fetch data from a Github repo by owner and name" do
-      assert %{"data" => %{"repository" => %{"name" => "mater"}}} = Github.fetch_repo("WLSF", "mater")
+      assert %{"data" => %{"repository" => %{"name" => "mater"}}} =
+               Github.fetch_repo("WLSF", "mater")
     end
   end
 end

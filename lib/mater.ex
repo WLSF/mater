@@ -15,10 +15,9 @@ defmodule Mater do
 
   """
   @spec call(endpoint, body, opts) :: {:ok, map()} | {:error, map()}
-    when
-      endpoint: String.t(),
-      body: %{query: String.t(), variables: map()},
-      opts: Keyword.t()
+        when endpoint: String.t(),
+             body: %{query: String.t(), variables: map()},
+             opts: Keyword.t()
   def call(endpoint, query, opts) do
   end
 end
