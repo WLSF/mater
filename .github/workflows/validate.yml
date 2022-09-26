@@ -24,7 +24,10 @@ jobs:
         run: mix format --check-formatted
 
       - name: Check Styling
-        run: mix do credo, dialyzer --no-check end
+        run: mix credo
+
+      - name: Static Analysis
+        run: mix dialyzer
 
       - name: Run tests
         run: mix test
