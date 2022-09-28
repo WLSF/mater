@@ -1,6 +1,10 @@
 name: Checks & Tests
 
-on: pull_request
+on:
+  pull_request:
+  push:
+    branches: [master]
+
 
 jobs:
   validate:
@@ -13,6 +17,8 @@ jobs:
         with:
           otp-version: 24.0.0
           elixir-version: 1.13.3
+        env:
+          GRAPHQL_KEY: ${{secrets.GRAPHQL_KEY}}
 
       - name: Install Dependencies
         run: mix deps.get
@@ -30,4 +36,4 @@ jobs:
         run: mix dialyzer
 
       - name: Run tests
-        run: mix test
+        run: GRAPHQL_KEY=${{secrets.GRAPHQL_KEY}} mix test
