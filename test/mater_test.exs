@@ -20,7 +20,7 @@ defmodule MaterTest do
     end
 
     defp auth do
-      [{"Authorization", "Bearer #{System.get_env("GRAPHQL_KEY")}"}]
+      [auth: "Bearer #{System.get_env("GRAPHQL_KEY")}"]
     end
   end
 
