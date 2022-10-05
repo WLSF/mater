@@ -5,7 +5,7 @@ defmodule Mater do
   Executes a HTTP request for a GraphQL Endpoint with the given:
     * endpoint
     * query (containing: query, variables, operationName)
-    * opts (simples keyword list just in case you need some auth)
+    * opts (keyword list just in case you need some auth)
   """
   @spec call(
           endpoint :: String.t(),
