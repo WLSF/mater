@@ -12,7 +12,8 @@ defmodule Mater do
           body :: %{query: String.t(), variables: String.t()},
           opts :: Keyword.t()
         ) :: {:ok, response :: map()} | {:error, reason :: map()}
-  def call(endpoint, body, opts) do
+
+  def call(endpoint, body, opts \\ []) do
     case HTTPoison.post(endpoint, Jason.encode!(body), decode_opts(opts)) do
       {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
         {:ok, Jason.decode!(body)}
