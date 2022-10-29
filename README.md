@@ -1,21 +1,9 @@
 # Mater
 
-**TODO: Add description**
+HELLO THERE, I am a GraphQL Client library for Elixir, needs to ingest data from a GraphQL endpoint? Let me help you.
 
-## Installation
+Still work in progress, any help or suggestions are welcome, feel free to contribute!
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mater` to your list of dependencies in `mix.exs`:
+# Instalation
 
-```elixir
-def deps do
-  [
-    {:mater, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/mater>.
-
+WIP
