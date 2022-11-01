@@ -18,9 +18,11 @@ defmodule Mater do
           opts :: Keyword.t()
         ) :: {:ok, response :: map()} | {:error, reason :: map()}
 
+  def call(endpoint, body, opts \\ [])
+  
   def call("", _, _),
     do: {:error, :nxdomain}
-  def call(endpoint, body, opts \\ []) do
+  def call(endpoint, body, opts) do
     case HTTPoison.post(endpoint, Jason.encode!(body), decode_opts(opts)) do
       {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
         {:ok, Jason.decode!(body)}
