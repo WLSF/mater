@@ -36,5 +36,9 @@ defmodule MaterTest do
     test "returns error when invalid graphql endpoint" do
       assert {:error, %HTTPoison.Error{reason: :nxdomain}} = Mater.call("invalid_endpoint", %{})
     end
+    
+    test "returns error when empty string endpoint" do
+      assert {:error, :nxdomain} = Mater.call("", %{})
+    end
   end
 end
