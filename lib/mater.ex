@@ -11,6 +11,8 @@ defmodule Mater do
     * endpoint
     * query (containing: query, variables, operationName)
     * opts (keyword list just in case you need some auth)
+    
+    TODO: Add :httpc as main library
   """
   @spec call(
           endpoint :: String.t(),
