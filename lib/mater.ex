@@ -1,5 +1,10 @@
 defmodule Mater do
-  @moduledoc false
+  @moduledoc """
+  Mater is a GraphQL Client Library for Elixir, holds connections with
+  GraphQL Servers (Endpoints) through HTTP requests.
+  
+  The main functionality is `Mater.call/3`.
+  """
 
   @doc """
   Executes a HTTP request for a GraphQL Endpoint with the given:
