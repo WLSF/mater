@@ -2,7 +2,7 @@ defmodule Mater do
   @moduledoc """
   Mater is a GraphQL Client Library for Elixir, holds connections with
   GraphQL Servers (Endpoints) through HTTP requests.
-  
+
   The main functionality is `Mater.call/3`.
   """
 
@@ -11,8 +11,11 @@ defmodule Mater do
     * endpoint
     * query (containing: query, variables, operationName)
     * opts (keyword list just in case you need some auth)
-    
-    TODO: Add :httpc as main library
+
+  ## Examples
+
+      iex> Mater.call("", %{})
+      {:error, :no_scheme}
   """
   @spec call(
           endpoint :: String.t(),
@@ -21,9 +24,10 @@ defmodule Mater do
         ) :: {:ok, response :: map()} | {:error, reason :: map()}
 
   def call(endpoint, body, opts \\ [])
-  
+
   def call("", _, _),
-    do: {:error, :nxdomain}
+    do: {:error, :no_scheme}
+
   def call(endpoint, body, opts) do
     case HTTPoison.post(endpoint, Jason.encode!(body), decode_opts(opts)) do
       {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
