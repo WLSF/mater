@@ -15,7 +15,7 @@ defmodule Mater do
   ## Examples
 
       iex> Mater.call("", %{})
-      {:error, :no_scheme}
+      {:error, :invalid_endpoint}
   """
   @spec call(
           endpoint :: String.t(),
@@ -26,27 +26,8 @@ defmodule Mater do
   def call(endpoint, body, opts \\ [])
 
   def call("", _, _),
-    do: {:error, :no_scheme}
+    do: {:error, :invalid_endpoint}
 
-  def call(endpoint, body, opts) do
-    case HTTPoison.post(endpoint, Jason.encode!(body), decode_opts(opts)) do
-      {:ok, %HTTPoison.Response{body: body, status_code: 200}} ->
-        {:ok, Jason.decode!(body)}
-
-      {:ok, %HTTPoison.Response{body: body}} ->
-        {:error, Jason.decode!(body)}
-
-      error ->
-        error
-    end
-  end
-
-  defp decode_opts(opts),
-    do: decode_opts(opts, [])
-
-  defp decode_opts([{:auth, auth} | rest], acc),
-    do: decode_opts(rest, [{"Authorization", auth} | acc])
-
-  defp decode_opts([], acc),
-    do: acc
+  def call(endpoint, body, opts),
+    do: Mater.HTTP.Poison.call(endpoint, body, opts)
 end
