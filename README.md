@@ -7,8 +7,3 @@ Still work in progress, any help or suggestions are welcome, feel free to contri
 # Instalation
 
 WIP
-
-# TODO Stuff
-
-* Try the comms with :httpc Erlang module.
-* Add more tests (find edge cases).
