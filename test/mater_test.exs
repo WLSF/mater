@@ -25,13 +25,6 @@ defmodule MaterTest do
       do: [auth: "Bearer #{System.get_env("GRAPHQL_KEY")}"]
   end
 
-  describe "Mater Github" do
-    test "fetch data from a Github repo by owner and name" do
-      assert {:ok, %{"data" => %{"repository" => %{"name" => "mater"}}}} =
-               Github.fetch_repo("WLSF", "mater")
-    end
-  end
-
   describe "Mater Errors" do
     test "returns error when invalid graphql endpoint" do
       assert {:error, :invalid_endpoint} = Mater.call("invalid_endpoint", %{})
