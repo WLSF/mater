@@ -29,5 +29,5 @@ defmodule Mater do
     do: {:error, :invalid_endpoint}
 
   def call(endpoint, body, opts),
-    do: Mater.HTTP.Poison.call(endpoint, body, opts)
+    do: Mater.HTTP.call(endpoint, body, opts)
 end
