@@ -2,6 +2,7 @@ defmodule MaterTest do
   use ExUnit.Case
   doctest Mater
 
+  # TODO: Fix this test to use auth requests and no auth both
   defmodule Github do
     alias Mater
 
