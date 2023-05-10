@@ -27,5 +27,5 @@ defmodule Mater.HTTP.Poison do
     do: decode_opts(rest, [{"Authorization", auth} | acc])
 
   defp decode_opts([], acc),
-    do: acc
+    do: [{"Content-Type", "application/json"} | acc]
 end
