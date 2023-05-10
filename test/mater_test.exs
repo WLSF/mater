@@ -27,7 +27,7 @@ defmodule MaterTest do
 
   describe "The Movie DB" do
     test "returns total count of movies based the term" do
-      assert {:ok, []} = TMDB.call("Matrix")
+      assert {:ok, %{"data" => %{"movies" => %{"search" => %{"totalCount" => 80}}}}} = TMDB.call("Matrix")
     end
   end
 
